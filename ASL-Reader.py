@@ -11,7 +11,7 @@ while(True):
     if cv2.waitKey(1) >= 0:
         break
 
-    img = webcam.read()[1]
+    img = webcam.read()[1]/255.0
     cv2.imshow('video', img)
 
     sleep(0.5)
