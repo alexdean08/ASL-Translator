@@ -3,7 +3,7 @@ from time import sleep
 import cv2
 import numpy as np
 
-model = keras.models.load_model('model (1).h5')
+model = keras.models.load_model('model.h5')
 webcam = cv2.VideoCapture(0)
 
 while(True):
@@ -40,5 +40,5 @@ while(True):
 
     if max_index != 26:
         print(chr(65+max_index))
-    #else:
-        #print('Blank')
+    else:
+        print('Blank')
