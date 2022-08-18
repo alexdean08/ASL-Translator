@@ -1,2 +1,2 @@
 # ASL-Translator
-Using OpenCV and an AlexNet-based convolutional neural network, this translates ASL into English
+Using OpenCV and a convolutional neural network, this translates ASL into English with 95% accuracy.
