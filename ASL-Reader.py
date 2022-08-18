@@ -3,7 +3,7 @@ from time import sleep
 import cv2
 import numpy as np
 
-model = keras.models.load_model('model.h5')
+model = keras.models.load_model('model (1).h5')
 webcam = cv2.VideoCapture(0)
 
 while(True):
@@ -11,10 +11,10 @@ while(True):
     if cv2.waitKey(1) >= 0:
         break
 
-    img = webcam.read()[1]/255.0
+    img = webcam.read()[1]
     cv2.imshow('video', img)
-
-    sleep(0.5)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img = img/255.0
     img_size = 100
 
     if img.shape[0] > img.shape[1]:
@@ -27,7 +27,7 @@ while(True):
     img_resized = cv2.resize(img, (img_size, img_size))
 
     img_resized = np.asarray(img_resized.reshape(-1, img_size, img_size, 1))
-    prediction = model.predict([img_resized])[0]
+    prediction = model.predict([img_resized], verbose=0)[0]
 
     i = -1
     max_val = 0
@@ -40,5 +40,5 @@ while(True):
 
     if max_index != 26:
         print(chr(65+max_index))
-    else:
-        print('Blank')
+    #else:
+        #print('Blank')
